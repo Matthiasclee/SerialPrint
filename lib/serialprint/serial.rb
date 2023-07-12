@@ -47,5 +47,17 @@ module SerialPrint
         File.delete(name)
       end
     end
+
+    def self.detect_open_ports(baud:9600)
+      10.times do |t|
+        begin
+          p = SerialPort.new("COM#{t}", baud, 8, 1, SerialPort::NONE)
+          break
+        rescue
+          p = nil
+        end
+      end
+      return p
+    end
   end
 end
