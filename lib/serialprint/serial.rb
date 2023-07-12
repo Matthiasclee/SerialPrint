@@ -9,7 +9,7 @@ module SerialPrint
         loop do
           byte = @ser.read(1)
           break if byte == "\f"
-          data << byte
+          data << byte if byte
         end
 
         data_as_html = <<-DATA
