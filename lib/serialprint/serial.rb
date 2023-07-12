@@ -55,7 +55,7 @@ module SerialPrint
       10.times do |t|
         begin
           p = SerialPort.new("COM#{t}", baud, 8, 1, SerialPort::NONE)
-          ports << p
+          ports << t
           p.close
         rescue
           p = nil
