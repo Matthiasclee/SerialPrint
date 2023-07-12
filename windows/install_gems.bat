@@ -1,5 +1,5 @@
 @echo off
 
-gem update --system --no-document
-gem install ffi --no-document
-gem install serialport --no-document
+start gem update --system --no-document
+start gem install ffi --no-document
+start gem install serialport --no-document
