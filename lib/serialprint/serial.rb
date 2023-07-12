@@ -57,7 +57,6 @@ module SerialPrint
           p = SerialPort.new("COM#{t}", baud, 8, 1, SerialPort::NONE)
           ports << t
           p.close
-          break
         rescue
           p = nil
         end
