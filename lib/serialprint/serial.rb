@@ -11,6 +11,32 @@ module SerialPrint
         data << byte
       end
 
+      data_as_html = <<-DATA
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <title>Printed Data</title>
+              <style>
+                body {
+                  font-family: monospace;
+                     }
+              </style>
+          </head>
+
+          <body>
+            <div>
+              #{data
+                .gsub("\r\n", "<br>")
+                .gsub(" ", "&nbsp;")}
+            </div>
+          </body>
+        </html>
+      DATA
+
+      name = "tmp#{rand(1000000..9999999)}.html"
+      File.write(name, data_as_html)
+      `firefox #{name}`
+
       STDOUT.puts data
     end
   end
