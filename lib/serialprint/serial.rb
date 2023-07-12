@@ -3,15 +3,16 @@ module SerialPrint
     def self.initialize(port, baud:9600)
       @ser = SerialPort.new(port, baud, 8, 1, SerialPort::NONE)
 
-      data = ""
-
       loop do
-        byte = @ser.read(1)
-        break if byte == "\f"
-        data << byte
-      end
+        data = ""
 
-      data_as_html = <<-DATA
+        loop do
+          byte = @ser.read(1)
+          break if byte == "\f"
+          data << byte
+        end
+
+        data_as_html = <<-DATA
         <!DOCTYPE html>
         <html>
           <head>
@@ -37,13 +38,14 @@ module SerialPrint
             </script>
           </body>
         </html>
-      DATA
+        DATA
 
-      name = "tmp#{rand(1000000..9999999)}.html"
-      File.write(name, data_as_html)
-      `firefox #{name}`
-      sleep(5)
-      File.delete(name)
+        name = "tmp#{rand(1000000..9999999)}.html"
+        File.write(name, data_as_html)
+        `firefox #{name}`
+        sleep(5)
+        File.delete(name)
+      end
     end
   end
 end
