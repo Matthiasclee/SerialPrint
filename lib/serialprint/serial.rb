@@ -42,7 +42,9 @@ module SerialPrint
 
         name = "tmp#{rand(1000000..9999999)}.html"
         File.write(name, data_as_html)
-        `firefox #{name}`
+
+        start_command = $windows ? "start" : "firefox"
+        `#{start_command} #{name}`
         sleep(5)
         File.delete(name)
       end
