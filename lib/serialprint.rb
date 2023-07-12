@@ -5,4 +5,4 @@ require "serialport"
 
 require_relative "serialprint/serial.rb"
 
-SerialPrint::Serial.initialize("/dev/ttyUSB1")
+SerialPrint::Serial.initialize("/dev/ttyS0")
