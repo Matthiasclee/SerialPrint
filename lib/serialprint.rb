@@ -7,4 +7,11 @@ require "serialport"
 
 require_relative "serialprint/serial.rb"
 
-SerialPrint::Serial.initialize(ARGV[0])
+
+if $windows && ARGV[0] == "auto"
+  port = SerialPrint::Serial.detect_open_ports[-1]
+else
+  port = ARGV[0]
+end
+
+SerialPrint::Serial.initialize(port)
