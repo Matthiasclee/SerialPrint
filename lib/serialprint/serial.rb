@@ -51,17 +51,18 @@ module SerialPrint
     end
 
     def self.detect_open_ports(baud:9600)
-      ports = []
+      port_number = 0
       10.times do |t|
+        port_number = t
         begin
           p = SerialPort.new("COM#{t}", baud, 8, 1, SerialPort::NONE)
-          ports << t
           p.close
+          break
         rescue
           p = nil
         end
       end
-      return ports.map {|p| "COM#{p}"}
+      return "COM#{port_number}"
     end
   end
 end
