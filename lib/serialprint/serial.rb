@@ -32,7 +32,6 @@ module SerialPrint
 
             <script>
               print()
-              window.open('', '_parent', '').close();
             </script>
           </body>
         </html>
