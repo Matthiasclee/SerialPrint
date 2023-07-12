@@ -16,7 +16,7 @@ module SerialPrint
         <!DOCTYPE html>
         <html>
           <head>
-            <title>Printed Data</title>
+            <title>Print Data</title>
               <style>
                 body {
                   font-family: monospace;
