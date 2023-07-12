@@ -36,6 +36,8 @@ module SerialPrint
       name = "tmp#{rand(1000000..9999999)}.html"
       File.write(name, data_as_html)
       `firefox #{name}`
+      sleep(5)
+      File.delete(name)
 
       STDOUT.puts data
     end
