@@ -43,8 +43,6 @@ module SerialPrint
       `firefox #{name}`
       sleep(5)
       File.delete(name)
-
-      STDOUT.puts data
     end
   end
 end
