@@ -1,1 +1,1 @@
-CreateObject("Wscript.Shell").Run "ruby C:\serialprint\lib\serialprint.rb auto windows",0,True
+CreateObject("Wscript.Shell").Run "C:\serialprint\windows\start.bat",0,True
