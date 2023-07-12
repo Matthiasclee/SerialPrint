@@ -29,6 +29,10 @@ module SerialPrint
                 .gsub("\r\n", "<br>")
                 .gsub(" ", "&nbsp;")}
             </div>
+
+            <script>
+              print()
+            </script>
           </body>
         </html>
       DATA
