@@ -6,7 +6,7 @@ git clone https://github.com/Matthiasclee/serialprint
 
 echo Running install commands
 cd serialprint\windows
-copy_to_startup.bat
+start copy_to_startup.bat
 powershell Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted
 powershell ./install_gems.ps1
 
