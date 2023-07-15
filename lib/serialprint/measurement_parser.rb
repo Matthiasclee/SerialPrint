@@ -49,5 +49,22 @@ module SerialPrint
         os_avg: os_avg_data
       }
     end
+
+    def self.make_graph(filename, datapoints)
+      x = (1..datapoints.length).to_a
+      y = datapoints
+
+      Gnuplot.open do |gp|
+        Gnuplot::Plot.new(gp) do |plot|
+          plot.terminal 'jpeg'
+          plot.output 'graph.jpg'
+
+          plot.data << Gnuplot::DataSet.new([x, y]) do |ds|
+            ds.with = 'linespoints'
+            ds.title = 'Data'
+          end
+        end
+      end
+    end
   end
 end

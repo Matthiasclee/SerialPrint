@@ -4,6 +4,7 @@ end
 $windows = (ARGV[1] == "windows")
 
 require "serialport"
+require "gnuplot"
 
 require_relative "serialprint/serial.rb"
 
