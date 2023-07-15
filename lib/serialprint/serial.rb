@@ -1,6 +1,6 @@
 module SerialPrint
   module Serial
-    def self.initialize(port, baud:9600)
+    def self.initialize(port, baud:115200)
       @ser = SerialPort.new(port, baud, 8, 1, SerialPort::NONE)
 
       loop do
@@ -60,7 +60,7 @@ module SerialPrint
       end
     end
 
-    def self.detect_open_ports(baud:9600)
+    def self.detect_open_ports(baud:115200)
       ports = []
       10.times do |t|
         begin
