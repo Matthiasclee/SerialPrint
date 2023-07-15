@@ -6,10 +6,18 @@ module SerialPrint
       loop do
         data = ""
 
+        extradata = ""
+
         loop do
           byte = @ser.read(1)
           break if byte == "\f"
           data << byte if byte
+        end
+
+        loop do
+          byte = @ser.read(1)
+          break if byte == "\f"
+          extradata << byte if byte
         end
 
         data_as_html = <<-DATA
