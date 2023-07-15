@@ -55,6 +55,8 @@ module SerialPrint
         `#{start_command} #{name}`
         sleep(5)
         File.delete(name)
+
+        File.write("extradata.txt", extradata)
       end
     end
 
