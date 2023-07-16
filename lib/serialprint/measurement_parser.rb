@@ -61,6 +61,7 @@ module SerialPrint
           plot.yrange "[0:256]"
 
           plot.unset "ytics"
+          plot.unset "xtics"
 
           plot.data << Gnuplot::DataSet.new([x,y]) do |ds|
             ds.with = 'lines'
