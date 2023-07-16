@@ -39,6 +39,25 @@ module SerialPrint
                 .gsub(" ", "&nbsp;")}
             </div>
 
+            <image src="OD_1.jpg"></image>
+            <image src="OS_1.jpg"></image>
+
+            <image src="OD_2.jpg"></image>
+            <image src="OS_2.jpg"></image>
+
+            <image src="OD_3.jpg"></image>
+            <image src="OS_3.jpg"></image>
+
+            <image src="OD_4.jpg"></image>
+            <image src="OS_4.jpg"></image>
+
+            <image src="OD_5.jpg"></image>
+            <image src="OS_5.jpg"></image>
+
+            <image src="OD_avg.jpg"></image>
+            <image src="OS_avg.jpg"></image>
+
+
             <script>
               print()
               let win = window.open(null, "_self");
