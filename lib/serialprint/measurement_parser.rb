@@ -60,8 +60,11 @@ module SerialPrint
           plot.output "#{filename}.jpg"
           plot.yrange "[0:256]"
 
+          plot.unset "ytics"
+
           plot.data << Gnuplot::DataSet.new([x,y]) do |ds|
             ds.with = 'lines'
+            ds.linecolor = "black"
             ds.title = graphname
           end
         end
