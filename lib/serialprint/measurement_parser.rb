@@ -60,7 +60,7 @@ module SerialPrint
           plot.output "#{filename}.jpg"
 
           plot.data << Gnuplot::DataSet.new([x, y]) do |ds|
-            ds.with = 'linespoints'
+            ds.with = 'lines'
             ds.title = 'Data'
           end
         end
