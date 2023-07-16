@@ -8,19 +8,21 @@ module SerialPrint
 
         extradata = ""
 
-        loop do
-          byte = @ser.read(1)
-          break if byte == "\f"
-          data << byte if byte
-        end
+        begin
 
-        loop do
-          byte = @ser.read(1)
-          break if byte == "\f"
-          extradata << byte if byte
-        end
+          loop do
+            byte = @ser.read(1)
+            break if byte == "\f"
+            data << byte if byte
+          end
 
-        data_as_html = <<-DATA
+          loop do
+            byte = @ser.read(1)
+            break if byte == "\f"
+            extradata << byte if byte
+          end
+
+          data_as_html = <<-DATA
         <!DOCTYPE html>
         <html>
           <head>
@@ -84,34 +86,42 @@ module SerialPrint
             </script>
           </body>
         </html>
-        DATA
+          DATA
 
-        name = "tmp_patient.html"
-        File.write(name, data_as_html)
+          name = "tmp_patient.html"
+          File.write(name, data_as_html)
 
-        parsed_data = MeasurementParser.parse_data extradata
-        MeasurementParser.make_graph("OD_1", "OD 1", parsed_data[:od][0])
-        MeasurementParser.make_graph("OS_1", "OS 1", parsed_data[:os][0])
+          parsed_data = MeasurementParser.parse_data extradata
+          MeasurementParser.make_graph("OD_1", "OD 1", parsed_data[:od][0])
+          MeasurementParser.make_graph("OS_1", "OS 1", parsed_data[:os][0])
 
-        MeasurementParser.make_graph("OD_2", "OD 2", parsed_data[:od][1])
-        MeasurementParser.make_graph("OS_2", "OS 2", parsed_data[:os][1])
+          MeasurementParser.make_graph("OD_2", "OD 2", parsed_data[:od][1])
+          MeasurementParser.make_graph("OS_2", "OS 2", parsed_data[:os][1])
 
-        MeasurementParser.make_graph("OD_3", "OD 3", parsed_data[:od][2])
-        MeasurementParser.make_graph("OS_3", "OS 3", parsed_data[:os][2])
+          MeasurementParser.make_graph("OD_3", "OD 3", parsed_data[:od][2])
+          MeasurementParser.make_graph("OS_3", "OS 3", parsed_data[:os][2])
 
-        MeasurementParser.make_graph("OD_4", "OD 4", parsed_data[:od][3])
-        MeasurementParser.make_graph("OS_4", "OS 4", parsed_data[:os][3])
+          MeasurementParser.make_graph("OD_4", "OD 4", parsed_data[:od][3])
+          MeasurementParser.make_graph("OS_4", "OS 4", parsed_data[:os][3])
 
-        MeasurementParser.make_graph("OD_5", "OD 5", parsed_data[:od][4])
-        MeasurementParser.make_graph("OS_5", "OS 5", parsed_data[:os][4])
+          MeasurementParser.make_graph("OD_5", "OD 5", parsed_data[:od][4])
+          MeasurementParser.make_graph("OS_5", "OS 5", parsed_data[:os][4])
 
-        MeasurementParser.make_graph("OD_avg", "OD Average", parsed_data[:od_avg])
-        MeasurementParser.make_graph("OS_avg", "OS Average", parsed_data[:os_avg])
+          MeasurementParser.make_graph("OD_avg", "OD Average", parsed_data[:od_avg])
+          MeasurementParser.make_graph("OS_avg", "OS Average", parsed_data[:os_avg])
 
-        start_command = $windows ? "start" : "firefox"
-        `#{start_command} #{name}`
+          start_command = $windows ? "start" : "firefox"
+          `#{start_command} #{name}`
 
-        STDOUT.puts "Done"
+          STDOUT.puts "Done"
+
+        rescue
+          STDERR.puts "Error. Try again with complete measurements."
+          File.write("tmp_patient.html", "<h1>An error occured. Ensure you have complete measurements.</h1>")
+
+          start_command = $windows ? "start" : "firefox"
+          `#{start_command} tmp_patient.html`
+        end
       end
     end
 
