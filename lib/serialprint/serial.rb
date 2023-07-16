@@ -97,7 +97,8 @@ module SerialPrint
           STDOUT.puts "Done"
 
         rescue
-          STDERR.puts "Error. Try again with complete measurements."
+          raise
+          STDERR.puts "Error."
           File.write("tmp_patient.html", "<h1>An error occured.</h1>")
 
           start_command = $windows ? "start" : "firefox"

@@ -26,8 +26,9 @@ module SerialPrint
 
 
       measurement_data.each_with_index do |line, iteration|
-        od = line.split(" ")[0..4].map{|x|x.to_i}
-        os = line.split(" ")[5..9].map{|x|x.to_i}
+        line = line.gsub("\t", " -").split("-").map{|x| x.gsub(" ", "")}
+        od = line[0..4].map{|x|x.to_i}
+        os = line[5..9].map{|x|x.to_i}
 
         od.each_with_index do |m, i|
           od_data[i][iteration]=m
