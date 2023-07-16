@@ -1,15 +1,14 @@
 @echo off
 
 echo Downloading SerialPrint
-cd C:\
-git clone https://github.com/Matthiasclee/serialprint
+git clone https://github.com/Matthiasclee/serialprint C:\serialprint
 
 echo Running install commands
-cd serialprint\windows
+powershell Expand-Archive -Path "gnuplot_windows.zip" -DestinationPath "C:\serialprint"
+cd C:\serialprint\windows
 start copy_to_startup.bat
 powershell Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted
 powershell ./install_gems.ps1
-powershell Expand-Archive -Path "gnuplot_windows.zip" -DestinationPath "C:\serialprint"
 
 echo Install done, reboot for changes to take effect.
 pause
