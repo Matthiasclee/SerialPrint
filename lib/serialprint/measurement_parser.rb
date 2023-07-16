@@ -63,6 +63,8 @@ module SerialPrint
           plot.unset "ytics"
           plot.unset "xtics"
 
+          plot.margin "3,3,0.5,0.5"
+
           plot.data << Gnuplot::DataSet.new([x,y]) do |ds|
             ds.with = 'lines'
             ds.linecolor = "black"
