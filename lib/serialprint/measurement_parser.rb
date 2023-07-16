@@ -50,7 +50,7 @@ module SerialPrint
       }
     end
 
-    def self.make_graph(filename, datapoints)
+    def self.make_graph(filename, graphname, datapoints)
       x = (1..datapoints.length).to_a
       y = datapoints
 
@@ -61,7 +61,7 @@ module SerialPrint
 
           plot.data << Gnuplot::DataSet.new([x, y]) do |ds|
             ds.with = 'lines'
-            ds.title = 'Data'
+            ds.title = graphname
           end
         end
       end

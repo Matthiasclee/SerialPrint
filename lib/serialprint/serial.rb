@@ -57,8 +57,23 @@ module SerialPrint
         File.delete(name)
 
         parsed_data = MeasurementParser.parse_data extradata
-        MeasurementParser.make_graph("OD", parsed_data[:od][0])
-        MeasurementParser.make_graph("OS", parsed_data[:os][0])
+        MeasurementParser.make_graph("OD_1", "OD 1", parsed_data[:od][0])
+        MeasurementParser.make_graph("OS_1", "OS 1", parsed_data[:os][0])
+
+        MeasurementParser.make_graph("OD_2", "OD 2", parsed_data[:od][1])
+        MeasurementParser.make_graph("OS_2", "OS 2", parsed_data[:os][1])
+
+        MeasurementParser.make_graph("OD_3", "OD 3", parsed_data[:od][2])
+        MeasurementParser.make_graph("OS_3", "OS 3", parsed_data[:os][2])
+
+        MeasurementParser.make_graph("OD_4", "OD 4", parsed_data[:od][3])
+        MeasurementParser.make_graph("OS_4", "OS 4", parsed_data[:os][3])
+
+        MeasurementParser.make_graph("OD_5", "OD 5", parsed_data[:od][4])
+        MeasurementParser.make_graph("OS_5", "OS 5", parsed_data[:os][4])
+
+        MeasurementParser.make_graph("OD_avg", "OD Average", parsed_data[:od_avg])
+        MeasurementParser.make_graph("OS_avg", "OS Average", parsed_data[:os_avg])
         STDOUT.puts "Done"
       end
     end
