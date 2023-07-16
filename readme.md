@@ -23,12 +23,13 @@ bottom again for `Done`.
 ## Usage
 ### Computer
 ```
-ruby lib/serialprint.rb <port> [os] [disable measurements]
+ruby lib/serialprint.rb <port> [os] [disable measurements] [baud]
 ```
 
 * `port`: Serial port. Set to `auto` to auto-detect on windows.
 * `os`: Operating system being used. Leave blank or set to `-` on linux, and set to `windows` on windows.
 * `disable measurements`: Toggle to read measurements or not. Set to `nomeasure` to disable measurements.
+* `baud`: Baud to use. Default: 115200
 
 Windows default: `ruby lib/serialprint.rb auto windows`
 
