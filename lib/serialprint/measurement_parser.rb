@@ -54,7 +54,7 @@ module SerialPrint
       x = (1..datapoints.length).to_a
       y = datapoints
 
-      dps = [y[0..2048], y[2049..4096]]
+      dps = [y[0..3000], y[3001..4096]]
 
       2.times do |t|
         y = dps[t]
