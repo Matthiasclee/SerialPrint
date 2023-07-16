@@ -58,6 +58,25 @@ module SerialPrint
             <image src="OS_avg_1_of_2.jpg"></image>
 
 
+            <image src="OD_1_2_of_2.jpg"></image>
+            <image src="OS_1_2_of_2.jpg"></image>
+
+            <image src="OD_2_2_of_2.jpg"></image>
+            <image src="OS_2_2_of_2.jpg"></image>
+
+            <image src="OD_3_2_of_2.jpg"></image>
+            <image src="OS_3_2_of_2.jpg"></image>
+
+            <image src="OD_4_2_of_2.jpg"></image>
+            <image src="OS_4_2_of_2.jpg"></image>
+
+            <image src="OD_5_2_of_2.jpg"></image>
+            <image src="OS_5_2_of_2.jpg"></image>
+
+            <image src="OD_avg_2_of_2.jpg"></image>
+            <image src="OS_avg_2_of_2.jpg"></image>
+
+
             <script>
               print()
               let win = window.open(null, "_self");
