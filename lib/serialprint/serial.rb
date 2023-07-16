@@ -41,42 +41,23 @@ module SerialPrint
                 .gsub(" ", "&nbsp;")}
             </div>
 
-            <image src="OD_1_1_of_2.jpg"></image>
-            <image src="OS_1_1_of_2.jpg"></image>
+            <image src="OD_1.jpg"></image>
+            <image src="OS_1.jpg"></image>
 
-            <image src="OD_2_1_of_2.jpg"></image>
-            <image src="OS_2_1_of_2.jpg"></image>
+            <image src="OD_2.jpg"></image>
+            <image src="OS_2.jpg"></image>
 
-            <image src="OD_3_1_of_2.jpg"></image>
-            <image src="OS_3_1_of_2.jpg"></image>
+            <image src="OD_3.jpg"></image>
+            <image src="OS_3.jpg"></image>
 
-            <image src="OD_4_1_of_2.jpg"></image>
-            <image src="OS_4_1_of_2.jpg"></image>
+            <image src="OD_4.jpg"></image>
+            <image src="OS_4.jpg"></image>
 
-            <image src="OD_5_1_of_2.jpg"></image>
-            <image src="OS_5_1_of_2.jpg"></image>
+            <image src="OD_5.jpg"></image>
+            <image src="OS_5.jpg"></image>
 
-            <image src="OD_avg_1_of_2.jpg"></image>
-            <image src="OS_avg_1_of_2.jpg"></image>
-
-
-            <image src="OD_1_2_of_2.jpg"></image>
-            <image src="OS_1_2_of_2.jpg"></image>
-
-            <image src="OD_2_2_of_2.jpg"></image>
-            <image src="OS_2_2_of_2.jpg"></image>
-
-            <image src="OD_3_2_of_2.jpg"></image>
-            <image src="OS_3_2_of_2.jpg"></image>
-
-            <image src="OD_4_2_of_2.jpg"></image>
-            <image src="OS_4_2_of_2.jpg"></image>
-
-            <image src="OD_5_2_of_2.jpg"></image>
-            <image src="OS_5_2_of_2.jpg"></image>
-
-            <image src="OD_avg_2_of_2.jpg"></image>
-            <image src="OS_avg_2_of_2.jpg"></image>
+            <image src="OD_avg.jpg"></image>
+            <image src="OS_avg.jpg"></image>
 
 
             <script>

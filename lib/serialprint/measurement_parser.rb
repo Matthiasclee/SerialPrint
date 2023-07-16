@@ -54,27 +54,21 @@ module SerialPrint
       x = (1..datapoints.length).to_a
       y = datapoints
 
-      dps = [y[0..3000], y[3001..4096]]
+      Gnuplot.open do |gp|
+        Gnuplot::Plot.new(gp) do |plot|
+          plot.terminal 'jpeg size 640,430'
+          plot.output "#{filename}.jpg"
+          plot.yrange "[0:256]"
 
-      2.times do |t|
-        y = dps[t]
+          plot.unset "ytics"
+          plot.unset "xtics"
 
-        Gnuplot.open do |gp|
-          Gnuplot::Plot.new(gp) do |plot|
-            plot.terminal 'jpeg size 640,430'
-            plot.output "#{filename}_#{t+1}_of_2.jpg"
-            plot.yrange "[0:256]"
+          plot.margin "3,3,0.5,0.5"
 
-            plot.unset "ytics"
-            plot.unset "xtics"
-
-            plot.margin "3,3,0.5,0.5"
-
-            plot.data << Gnuplot::DataSet.new([x,y]) do |ds|
-              ds.with = 'lines'
-              ds.linecolor = "black"
-              ds.title = "#{graphname} #{t+1}/2"
-            end
+          plot.data << Gnuplot::DataSet.new([x,y]) do |ds|
+            ds.with = 'lines'
+            ds.linecolor = "black"
+            ds.title = "#{graphname}"
           end
         end
       end
