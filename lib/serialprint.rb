@@ -2,6 +2,7 @@ module SerialPrint
 end
 
 $windows = (ARGV[1] == "windows")
+$measurements = (ARGV[2] != "nomeasure")
 
 require "serialport"
 require "gnuplot"

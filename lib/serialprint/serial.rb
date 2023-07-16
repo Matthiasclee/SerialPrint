@@ -16,10 +16,12 @@ module SerialPrint
             data << byte if byte
           end
 
-          loop do
-            byte = @ser.read(1)
-            break if byte == "\f"
-            extradata << byte if byte
+          if $measurements
+            loop do
+              byte = @ser.read(1)
+              break if byte == "\f"
+              extradata << byte if byte
+            end
           end
 
           data_as_html = <<-DATA
@@ -41,6 +43,8 @@ module SerialPrint
                 .gsub(" ", "&nbsp;")}
             </div>
 
+            #{
+            '
             <image src="OD_1.jpg"></image>
             <image src="OS_1.jpg"></image>
 
@@ -58,6 +62,7 @@ module SerialPrint
 
             <image src="OD_avg.jpg"></image>
             <image src="OS_avg.jpg"></image>
+            ' if $measurements}
 
 
             <script>
@@ -72,24 +77,26 @@ module SerialPrint
           name = "tmp_patient.html"
           File.write(name, data_as_html)
 
-          parsed_data = MeasurementParser.parse_data extradata
-          MeasurementParser.make_graph("OD_1", "OD 1", parsed_data[:od][0])
-          MeasurementParser.make_graph("OS_1", "OS 1", parsed_data[:os][0])
+          if $measurements
+            parsed_data = MeasurementParser.parse_data extradata
+            MeasurementParser.make_graph("OD_1", "OD 1", parsed_data[:od][0])
+            MeasurementParser.make_graph("OS_1", "OS 1", parsed_data[:os][0])
 
-          MeasurementParser.make_graph("OD_2", "OD 2", parsed_data[:od][1])
-          MeasurementParser.make_graph("OS_2", "OS 2", parsed_data[:os][1])
+            MeasurementParser.make_graph("OD_2", "OD 2", parsed_data[:od][1])
+            MeasurementParser.make_graph("OS_2", "OS 2", parsed_data[:os][1])
 
-          MeasurementParser.make_graph("OD_3", "OD 3", parsed_data[:od][2])
-          MeasurementParser.make_graph("OS_3", "OS 3", parsed_data[:os][2])
+            MeasurementParser.make_graph("OD_3", "OD 3", parsed_data[:od][2])
+            MeasurementParser.make_graph("OS_3", "OS 3", parsed_data[:os][2])
 
-          MeasurementParser.make_graph("OD_4", "OD 4", parsed_data[:od][3])
-          MeasurementParser.make_graph("OS_4", "OS 4", parsed_data[:os][3])
+            MeasurementParser.make_graph("OD_4", "OD 4", parsed_data[:od][3])
+            MeasurementParser.make_graph("OS_4", "OS 4", parsed_data[:os][3])
 
-          MeasurementParser.make_graph("OD_5", "OD 5", parsed_data[:od][4])
-          MeasurementParser.make_graph("OS_5", "OS 5", parsed_data[:os][4])
+            MeasurementParser.make_graph("OD_5", "OD 5", parsed_data[:od][4])
+            MeasurementParser.make_graph("OS_5", "OS 5", parsed_data[:os][4])
 
-          MeasurementParser.make_graph("OD_avg", "OD Average", parsed_data[:od_avg])
-          MeasurementParser.make_graph("OS_avg", "OS Average", parsed_data[:os_avg])
+            MeasurementParser.make_graph("OD_avg", "OD Average", parsed_data[:od_avg])
+            MeasurementParser.make_graph("OS_avg", "OS Average", parsed_data[:os_avg])
+          end
 
           start_command = $windows ? "start" : "firefox"
           `#{start_command} #{name}`
