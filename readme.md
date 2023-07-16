@@ -19,3 +19,21 @@ will need to set `Printer` to `None`, unless you have a printer set up. Data won
 the print fails. Next, set `Serial Link` to `Text with Data`. This is so that measurements can be sent
 to have the waveform generated. Finally, set `Serial Baud` to `115200 8-N-1`. Press the 6th button on the
 bottom again for `Done`.
+
+## Usage
+### Computer
+```
+ruby lib/serialprint.rb <port> [os] [disable measurements]
+```
+
+* `port`: Serial port. Set to `auto` to auto-detect on windows.
+* `os`: Operating system being used. Leave blank or set to `-` on linux, and set to `windows` on windows.
+* `disable measurements`: Toggle to read measurements or not. Set to `nomeasure` to disable measurements.
+
+Windows default: `ruby lib/serialprint.rb auto windows`
+
+When running, and a print is received, it will open in the browser, and prompt you to print it. Choose
+print to PDF to save as a PDF.
+
+### A-Scan
+When a patient is recalled, press the print button. The data will appear on the computer.
