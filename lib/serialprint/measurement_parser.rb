@@ -56,7 +56,7 @@ module SerialPrint
 
       Gnuplot.open do |gp|
         Gnuplot::Plot.new(gp) do |plot|
-          plot.terminal 'jpeg'
+          plot.terminal 'jpeg size 640,390'
           plot.output "#{filename}.jpg"
           plot.yrange "[0:256]"
 
