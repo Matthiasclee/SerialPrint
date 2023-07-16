@@ -58,8 +58,9 @@ module SerialPrint
         Gnuplot::Plot.new(gp) do |plot|
           plot.terminal 'jpeg'
           plot.output "#{filename}.jpg"
+          plot.yrange "[0:256]"
 
-          plot.data << Gnuplot::DataSet.new([x, y]) do |ds|
+          plot.data << Gnuplot::DataSet.new([x,y]) do |ds|
             ds.with = 'lines'
             ds.title = graphname
           end
