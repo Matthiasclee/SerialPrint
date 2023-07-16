@@ -67,13 +67,8 @@ module SerialPrint
         </html>
         DATA
 
-        name = "tmp#{rand(1000000..9999999)}.html"
+        name = "tmp_patient.html"
         File.write(name, data_as_html)
-
-        start_command = $windows ? "start" : "firefox"
-        `#{start_command} #{name}`
-        sleep(5)
-        File.delete(name)
 
         parsed_data = MeasurementParser.parse_data extradata
         MeasurementParser.make_graph("OD_1", "OD 1", parsed_data[:od][0])
@@ -93,6 +88,10 @@ module SerialPrint
 
         MeasurementParser.make_graph("OD_avg", "OD Average", parsed_data[:od_avg])
         MeasurementParser.make_graph("OS_avg", "OS Average", parsed_data[:os_avg])
+
+        start_command = $windows ? "start" : "firefox"
+        `#{start_command} #{name}`
+
         STDOUT.puts "Done"
       end
     end
