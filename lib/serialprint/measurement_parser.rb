@@ -37,8 +37,8 @@ module SerialPrint
           os_data[i][iteration]=m
         end
 
-        od_avg_data = od.sum / 5
-        os_avg_data = os.sum / 5
+        od_avg_data[iteration] = od.sum / 5
+        os_avg_data[iteration] = os.sum / 5
       end
 
 
@@ -57,7 +57,7 @@ module SerialPrint
       Gnuplot.open do |gp|
         Gnuplot::Plot.new(gp) do |plot|
           plot.terminal 'jpeg'
-          plot.output 'graph.jpg'
+          plot.output "#{filename}.jpg"
 
           plot.data << Gnuplot::DataSet.new([x, y]) do |ds|
             ds.with = 'linespoints'

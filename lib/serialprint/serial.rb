@@ -56,7 +56,10 @@ module SerialPrint
         sleep(5)
         File.delete(name)
 
-        File.write("extradata.txt", extradata)
+        parsed_data = MeasurementParser.parse_data extradata
+        MeasurementParser.make_graph("OD", parsed_data[:od][0])
+        MeasurementParser.make_graph("OS", parsed_data[:os][0])
+        STDOUT.puts "Done"
       end
     end
 

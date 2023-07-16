@@ -7,6 +7,7 @@ require "serialport"
 require "gnuplot"
 
 require_relative "serialprint/serial.rb"
+require_relative "serialprint/measurement_parser.rb"
 
 
 if $windows && ARGV[0] == "auto"
