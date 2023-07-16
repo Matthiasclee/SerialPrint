@@ -98,7 +98,7 @@ module SerialPrint
 
         rescue
           STDERR.puts "Error. Try again with complete measurements."
-          File.write("tmp_patient.html", "<h1>An error occured. Ensure you have complete measurements.</h1>")
+          File.write("tmp_patient.html", "<h1>An error occured.</h1>")
 
           start_command = $windows ? "start" : "firefox"
           `#{start_command} tmp_patient.html`
