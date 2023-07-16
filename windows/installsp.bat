@@ -9,6 +9,7 @@ cd serialprint\windows
 start copy_to_startup.bat
 powershell Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted
 powershell ./install_gems.ps1
+powershell Expand-Archive -Path "gnuplot_windows.zip" -DestinationPath "C:\serialprint"
 
 echo Install done, reboot for changes to take effect.
 pause
