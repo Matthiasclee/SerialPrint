@@ -5,7 +5,7 @@
 * [USB to serial cable](https://www.amazon.com/Sabrent-Converter-Prolific-Chipset-CB-DB9P/dp/B00IDSM6BW)
 
 ### Computer setup (windows)
-First, obtain a copy of `serialprint_install.EXE` [here](https://ftp.bluemail.pro/matthias/serialprint/serialprint_install.EXE), and run it as administrator. When you run it, it will
+First, obtain a copy of `serialprint_install.EXE` [here](https://ftp.bluemail.pro/matthias/public_files/serialprint/serialprint_install.EXE), and run it as administrator. When you run it, it will
 extract files. It will then prompt you to install programs. Pressing `return` will proceed with the
 installation of the current program. Follow the printed directions for program-specific info. Next, it will
 open another `cmd` window. This one will install Serial Print itself. Most likely, it will show some sort
